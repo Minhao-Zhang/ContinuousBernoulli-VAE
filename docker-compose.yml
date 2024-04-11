@@ -1,0 +1,22 @@
+version: '1.0'
+services: 
+  pml-container: 
+    build: . 
+    ports:
+      - 8888:8888 
+    volumes: 
+      - .:/Probabilistic_Deep_Learning
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    stdin_open: true
+    tty: true
+    
+    deploy:
+     resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
