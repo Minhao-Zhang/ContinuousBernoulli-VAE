@@ -72,24 +72,24 @@ Some other loss functions can be found in the [loss_functions.py](loss_functions
 
 The results of the model are shown in the following figures:
 
-<figure align="center">
+<div align="center">
   <img src="figs/reconstruction_comparison.png" alt="Test Reconstruction Comparison">
   <figcaption>Reconstructon. Top to bottom: Test data, VAE2, VAE20, CBVAE-Mean, CBVAE-Lambda, BetaVAE</figcaption>
-</figure>
+</div>
 
 The sampling results are shown in the following figures:
 
-<figure align="center">
+<div align="center">
   <img src="figs/sampling_comparison.png" alt="Sampling Comparison">
   <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE-Mean, CBVAE-Lambda, BetaVAE</figcaption>
-</figure>
+</div>
 
-See more details in the writeup. 
+See more details in the writeup.
 
 ## Acknowledgements
 
 This project is an adaptation from my previous course project in the course [Probabilistic Machine Learning](https://kurser.ku.dk/course/NDAK21004U/2023-2024) at University of Copenhagen.
 
-One function is taken from [Robert Aduviri](https://robert-alonso.github.io/) and [Alfredo de la Fuente](https://alfo5123.github.io/) and their code can be found in  [Continuous-Bernoulli-VAE](https://github.com/Robert-Aduviri/Continuous-Bernoulli-VAE).
+One function is taken from [Robert Aduviri](https://robert-alonso.github.io/) and [Alfredo de la Fuente](https://alfo5123.github.io/) and their code can be found in [Continuous-Bernoulli-VAE](https://github.com/Robert-Aduviri/Continuous-Bernoulli-VAE).
 
 See some of the original work [here](https://github.com/Minhao-Zhang/PML_Final_2023_B2).
