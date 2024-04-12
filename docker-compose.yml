@@ -1,11 +1,11 @@
 version: '1.0'
 services: 
-  pml-container: 
+  vae: 
     build: . 
     ports:
       - 8888:8888 
     volumes: 
-      - .:/Probabilistic_Deep_Learning
+      - .:/ContinuousBernoulliVAE
     ipc: host
     ulimits:
       memlock: -1

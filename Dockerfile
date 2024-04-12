@@ -2,7 +2,7 @@
 FROM nvcr.io/nvidia/pytorch:24.03-py3
 
 # Set the working directory
-WORKDIR /Probabilistic_Deep_Learning
+WORKDIR /ContinuousBernoulliVAE
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt ./

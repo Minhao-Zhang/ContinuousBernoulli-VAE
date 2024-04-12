@@ -1,4 +1,4 @@
-# Probabilistic Deep Learning
+# Continuous Bernulli Variational Autoencoder
 
 ## Introduction
 
@@ -61,25 +61,35 @@ As stated in the [Appendix](https://arxiv.org/src/1907.06845v5/anc/cont_bern_app
 This model is trained on the MNIST dataset for 100 epochs with a learning rate of 0.001 and Adam optimizer.
 
 The original model is written in tensorflow, but I will be using PyTorch for this project.
+You can see the relevent models in the [models.py](models.py) file.
+Thus, certain cost function also needs to be re-written in numerically stable way.
 
-### Results
+One most important function is the `sumlogC()` which is a numerically stable implementation of sum of logarithm of Continous Bernoulli constant C, using Taylor 2nd degree approximation.
+I used code from [Robert Aduviri](https://robert-alonso.github.io/) and [Alfredo de la Fuente](https://alfo5123.github.io/) and their code can be found in [Continuous-Bernoulli-VAE](https://github.com/Robert-Aduviri/Continuous-Bernoulli-VAE).
+Some other loss functions can be found in the [loss_functions.py](loss_functions.py) file.
+
+### Preliminary Results
 
 The results of the model are shown in the following figures:
 
-<figure>
+<figure align="center">
   <img src="figs/reconstruction_comparison.png" alt="Test Reconstruction Comparison">
-  <figcaption>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE</figcaption>
+  <figcaption>Reconstructon. Top to bottom: Test data, VAE2, VAE20, CBVAE-Mean, CBVAE-Lambda, BetaVAE</figcaption>
 </figure>
 
 The sampling results are shown in the following figures:
 
-<figure>
+<figure align="center">
   <img src="figs/sampling_comparison.png" alt="Sampling Comparison">
-  <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE</figcaption>
+  <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE-Mean, CBVAE-Lambda, BetaVAE</figcaption>
 </figure>
+
+See more details in the writeup. 
 
 ## Acknowledgements
 
 This project is an adaptation from my previous course project in the course [Probabilistic Machine Learning](https://kurser.ku.dk/course/NDAK21004U/2023-2024) at University of Copenhagen.
+
+One function is taken from [Robert Aduviri](https://robert-alonso.github.io/) and [Alfredo de la Fuente](https://alfo5123.github.io/) and their code can be found in  [Continuous-Bernoulli-VAE](https://github.com/Robert-Aduviri/Continuous-Bernoulli-VAE).
 
 See some of the original work [here](https://github.com/Minhao-Zhang/PML_Final_2023_B2).
