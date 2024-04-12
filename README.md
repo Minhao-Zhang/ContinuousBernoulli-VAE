@@ -30,19 +30,19 @@ As pointed out in the paper by Loaiza-Ganem and Cunningham, the standard Bernoul
 Thus, the paper proposed a Continuous Bernoulli distribution that can model continuous data. The Continuous Bernoulli distribution is defined as follows:
 
 $$
-\begin{aligned}
-p(x|\lambda) &= C(\lambda)x^{\lambda}(1 - \lambda)^{1-x}, \text{ where } C(\lambda) =
-\begin{cases}
-    \frac{\lambda}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
-    0.5 & \text{otherwise}
-\end{cases}\\
+\begin{align*}
+    p(x|\lambda) &= C(\lambda)x^{\lambda}(1 - \lambda)^{1-x}, \text{ where } C(\lambda) =
+    \begin{cases}
+        \frac{\lambda}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
+        0.5 & \text{otherwise}
+    \end{cases}\\
 
-\mu(\lambda) &:= \mathbb{E}[X] =
-\begin{cases}
-    \frac{1}{2\lambda - 1} + \frac{1}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
-    0.5 & \text{otherwise}
-\end{cases}
-\end{aligned}
+    \mu(\lambda) &:= \mathbb{E}[X] =
+    \begin{cases}
+        \frac{1}{2\lambda - 1} + \frac{1}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
+        0.5 & \text{otherwise}
+    \end{cases}
+\end{align*}
 $$
 
 where $\lambda\in(0,1)$.
@@ -60,21 +60,23 @@ As stated in the [Appendix](https://arxiv.org/src/1907.06845v5/anc/cont_bern_app
 
 This model is trained on the MNIST dataset for 100 epochs with a learning rate of 0.001 and Adam optimizer.
 
-The original model is written in tensorflow, but I will be using PyTorch for this project. 
+The original model is written in tensorflow, but I will be using PyTorch for this project.
 
-### Results 
+### Results
 
 The results of the model are shown in the following figures:
-<p>
-    <img src="figs/reconstruction_comparison.png" alt>
-    <em>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE</em>
-</p>
+
+<figure>
+  <img src="figs/reconstruction_comparison.png" alt="Test Reconstruction Comparison">
+  <figcaption>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE<</figcaption>
+</figure>
 
 The sampling results are shown in the following figures:
-<p>
-    <img src="figs/sampling_comparison.png" alt>
-    <em>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE</em>
-</p>
+
+<figure>
+  <img src="figs/sampling_comparison.png" alt="Sampling Comparison">
+  <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE<</figcaption>
+</figure>
 
 ## Acknowledgements
 
