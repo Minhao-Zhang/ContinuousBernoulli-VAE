@@ -9,6 +9,7 @@ The models will be trained using PyTorch and the results will be evaluated using
 ## Installation
 
 Make sure you have a NVIDIA GPU with CUDA installed.
+If not, you need to change the docker file to use the CPU version of PyTorch and change the `device` in the code to `cpu`.
 
 To prepare the environment, run the following commands:
 
@@ -17,6 +18,63 @@ docker compose up
 ```
 
 This will build a Docker image with all the necessary dependencies and start a container with Jupyter Lab running on port 8888.
+
+You might also want to create some folders to store the data and the results.
+
+## Inspiration
+
+The project is inspired by the paper [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) by Kingma and Welling and another paper [The Continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) by Loaiza-Ganem and Cunningham.
+
+As pointed out in the paper by Loaiza-Ganem and Cunningham, the standard Bernoulli distribution is, mathematically, not suitable for modeling continuous data, such as pixel values in images. Bernoulli distribution is a discrete distribution with 0 or 1 as output, but the pixel value can be 0 to 255, or 0 to 1 if you scaled it.
+
+Thus, the paper proposed a Continuous Bernoulli distribution that can model continuous data. The Continuous Bernoulli distribution is defined as follows:
+
+$$
+\begin{aligned}
+p(x|\lambda) &= C(\lambda)x^{\lambda}(1 - \lambda)^{1-x}, \text{ where } C(\lambda) =
+\begin{cases}
+    \frac{\lambda}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
+    0.5 & \text{otherwise}
+\end{cases}\\
+
+\mu(\lambda) &:= \mathbb{E}[X] =
+\begin{cases}
+    \frac{1}{2\lambda - 1} + \frac{1}{2\text{tanh}^{-1}(1 - 2\lambda)} & \text{if } \lambda \neq 0.5 \\
+    0.5 & \text{otherwise}
+\end{cases}
+\end{aligned}
+$$
+
+where $\lambda\in(0,1)$.
+
+To see more properties of the Continuous Bernoulli distribution, please refer to the [paper](https://arxiv.org/abs/1907.06845).
+
+## Recreating the results
+
+As stated in the [Appendix](https://arxiv.org/src/1907.06845v5/anc/cont_bern_appendix.pdf) of the paper by Loaiza-Ganem and Cunningham, their model
+
+- 2 500-unit encoder layers with ReLU activation and dropout rate of 0.1
+- outout layer of mean with no activation and standard deviation with a softplus activation
+- latent space with 20 dimensions
+- 2 500-unit decoder layers with ReLU activation and dropout rate of 0.1
+
+This model is trained on the MNIST dataset for 100 epochs with a learning rate of 0.001 and Adam optimizer.
+
+The original model is written in tensorflow, but I will be using PyTorch for this project. 
+
+### Results 
+
+The results of the model are shown in the following figures:
+<p>
+    <img src="figs/reconstruction_comparison.png" alt>
+    <em>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE</em>
+</p>
+
+The sampling results are shown in the following figures:
+<p>
+    <img src="figs/sampling_comparison.png" alt>
+    <em>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE</em>
+</p>
 
 ## Acknowledgements
 
