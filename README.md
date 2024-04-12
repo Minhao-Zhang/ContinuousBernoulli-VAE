@@ -29,7 +29,7 @@ As pointed out in the paper by Loaiza-Ganem and Cunningham, the standard Bernoul
 
 Thus, the paper proposed a Continuous Bernoulli distribution that can model continuous data. The Continuous Bernoulli distribution is defined as follows:
 
-$$
+```math
 \begin{align*}
     p(x|\lambda) &= C(\lambda)x^{\lambda}(1 - \lambda)^{1-x}, \text{ where } C(\lambda) =
     \begin{cases}
@@ -43,7 +43,7 @@ $$
         0.5 & \text{otherwise}
     \end{cases}
 \end{align*}
-$$
+```
 
 where $\lambda\in(0,1)$.
 
@@ -68,14 +68,14 @@ The results of the model are shown in the following figures:
 
 <figure>
   <img src="figs/reconstruction_comparison.png" alt="Test Reconstruction Comparison">
-  <figcaption>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE<</figcaption>
+  <figcaption>Reconstructon of test data. Top to bottom: Test data, VAE2, VAE20, CBVAE, BetaVAE</figcaption>
 </figure>
 
 The sampling results are shown in the following figures:
 
 <figure>
   <img src="figs/sampling_comparison.png" alt="Sampling Comparison">
-  <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE<</figcaption>
+  <figcaption>Sampling. Top to bottom: VAE2, VAE20, CBVAE, BetaVAE</figcaption>
 </figure>
 
 ## Acknowledgements
